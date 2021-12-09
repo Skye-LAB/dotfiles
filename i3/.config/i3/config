@@ -12,6 +12,7 @@ floating_modifier $super
 #autostart
 exec --no-startup-id feh --bg-scale ~/Pictures/wallpapers/1.jpg
 exec --no-startup-id nm-applet --indicator &
+exec --no-startup-id dunst &
 exec --no-startup-id picom &
 exec --no-startup-id synclient HorizTwoFingerScroll=1
 
@@ -23,7 +24,9 @@ bindsym $super+Shift+d exec i3-dmenu-desktop --dmenu="dmenu -i -fn 'Noto Sans:si
 bindsym $super+d exec rofi -show drun
 
 # common apps keybinds
-bindsym Print exec scrot 'Cheese_%a-%d%b%y_%H.%M.png' -e 'viewnior ~/$f'
+bindsym Print exec flameshot screen -p ~/Pictures/ss/
+bindsym $super+Print exec flameshot gui -p ~/Pictures/ss/
+bindsym $super+Shift+Print exec flameshot gui
 bindsym $super+Control+l exec betterlockscreen -l
 bindsym $super+Shift+b exec firefox
 bindsym $super+Shift+f exec thunar;workspace 3;focus
@@ -60,10 +63,10 @@ bindsym $super+Shift+k move up
 bindsym $super+Shift+l move right
 
 # split in horizontal orientation
-bindsym $super+s+h split h
+bindsym $alt+h split h
 
 # split in vertical orientation
-bindsym $super+s+v split v
+bindsym $alt+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $super+f fullscreen toggle
@@ -103,13 +106,40 @@ bindsym $super+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg 
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        bindsym h resize shrink width 5 px or 5 ppt
-        bindsym j resize grow height 5 px or 5 ppt
-        bindsym k resize shrink height 5 px or 5 ppt
-        bindsym l resize grow width 5 px or 5 ppt
-        bindsym Escape mode "default"
+    bindsym h resize shrink width 5 px or 5 ppt
+    bindsym j resize grow height 5 px or 5 ppt
+    bindsym k resize shrink height 5 px or 5 ppt
+    bindsym l resize grow width 5 px or 5 ppt
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 bindsym $super+r mode "resize"
+
+bindsym $super+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+#############################
+### settings for i3-gaps: ###
+#############################
+
+# Set inner/outer gaps
+gaps inner 10
+gaps outer -4
 
 # panel
 bar {
