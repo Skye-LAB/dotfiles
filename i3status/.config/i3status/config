@@ -46,7 +46,7 @@ wireless wlp1s0 {
 }
 
 volume master {
-        format = "<span background='#ebcb8b'>  %volume </span>"
+        format = "<span background='#ebcb8b'> 墳 %volume </span>"
         format_muted = "<span background='#ebcb8b'> 婢Muted </span>"
         device = "pulse:0"
 }
