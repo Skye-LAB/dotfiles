@@ -82,12 +82,14 @@ autoload edit-command-line; zle -N edit-command-line
 
 # Speedy keys
 # xset r rate 210 40
-xset r rate 200 40
+# xset r rate 200 40
 
 # Environment variables set everywhere
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
+export XBPS_DISTDIR=$HOME/.void-packages
+
 
 # For QT Themes
 export QT_QPA_PLATFORMTHEME=qt5ct
