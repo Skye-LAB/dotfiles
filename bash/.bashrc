@@ -54,3 +54,7 @@ alias xp='sudo xbps-pkgdb'
 alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

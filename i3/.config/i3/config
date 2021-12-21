@@ -30,9 +30,9 @@ bindsym Print exec flameshot screen -p ~/Pictures/ss/
 bindsym $super+Print exec flameshot gui 
 bindsym $super+Shift+Print exec flameshot gui -p ~/Pictures/ss/
 bindsym $super+Control+l exec betterlockscreen -l
-bindsym $super+Shift+b exec firefox
+bindsym $super+Shift+b exec ~/Applications/Brave-x86_64.AppImage &
 bindsym $super+Shift+f exec thunar;workspace 3;focus
-bindsym $super+Shift+w exec geany
+bindsym $super+Shift+w exec mousepad
 
 #change volume
 bindsym XF86AudioRaiseVolume exec pactl -- set-sink-volume 0 +5%
