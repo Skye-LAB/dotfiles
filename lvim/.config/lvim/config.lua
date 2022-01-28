@@ -119,13 +119,14 @@ lvim.builtin.treesitter.highlight.enabled = true
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   -- { exe = "black", filetypes = { "python" } },
+  -- { exe = "lua_format", filetypes = {"lua"} },
   {
-    exe = "prettier",
+    exe = "prettierd",
     ---@usage arguments to pass to the formatter
     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
     -- args = { "--print-with", "100" },
     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
   },
 }
 
@@ -220,6 +221,22 @@ lvim.plugins = {
       require("todo-comments").setup()
     end,
   },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "BufRead",
+    config = function()
+      require "lsp_signature".setup()
+    end
+  },
+  {
+    "npxbr/glow.nvim",
+    ft = {"markdown"}
+  },
+  {
+    "turbio/bracey.vim",
+    cmd = {"Bracey", "BracyStop", "BraceyReload", "BraceyEval"},
+    run = "npm install --prefix server",
+  }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

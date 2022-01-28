@@ -94,7 +94,7 @@ export XBPS_DISTDIR=$HOME/.void-packages
 # For QT Themes
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-setxkbmap -option caps:escape
+# setxkbmap -option caps:escape
 # swap escape and caps
 # setxkbmap -option caps:swapescape
 # setxkbmap -option caps:escape
